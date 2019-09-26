@@ -14,7 +14,7 @@ public class App {
     public static void main(String[] args) {
 
         Sala sala = new Sala(10, 10);
-        sala.setItem(new Porta(false, "11", 1),3, 0);
+        sala.setItem(new Porta(false, "01", 1), 3, 0);
         sala.setItem(new Chave("1"), 1, 1);
         sala.setItem(new Chave("2"), 1, 6);
         sala.addJogador(new Jogador(1, 8));
@@ -60,12 +60,11 @@ public class App {
                 }
                 if (item instanceof Porta) {
                     Chave chave = jogador.getChave();
-                    if(chave != null)
-                        ((Porta) item).use(jogador);
+                    ((Porta) item).use(jogador);
                 }
                 break;
             case "inventario":
-                if(jogador.getChave() != null)
+                if (jogador.getChave() != null)
                     System.out.println("O jogador " + jogador.getId() + " esta com a chave " + jogador.getChave().getId());
                 else
                     System.out.println("O jogador " + jogador.getId() + " esta sem chave");
@@ -81,7 +80,7 @@ public class App {
     }
 
     private static Item getItemOnPosition(Sala sala, Position position) {
-        System.out.println("Pegando item na posição: \n Vertical: " +position.getVer()+ "\n Hor: "+position.getHor());
+        System.out.println("Pegando item na posição: \n Vertical: " + position.getVer() + "\n Hor: " + position.getHor());
         return sala.getMatriz()[position.getVer()][position.getHor()];
     }
 

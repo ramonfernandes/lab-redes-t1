@@ -18,13 +18,19 @@ public class Porta extends Item {
     }
 
     public void use(Jogador jogador) {
-        combinacao = combinacao.replace(jogador.getId() + jogador.getChave().getId(), "");
-        if (aberta)
-            System.out.println("Porta já está aberta");
-        else if (combinacao.isEmpty()) {
-            System.out.println("Você abriu a porta");
-        } else {
-            System.out.println("Porta continua trancada");
+        try {
+            String temp = combinacao.replaceAll(jogador.getId() + jogador.getChave().getId(), "");
+            if (aberta)
+                System.out.println("Porta já está aberta");
+            else if (temp.isEmpty()) {
+                combinacao = temp;
+                aberta = true;
+                System.out.println("Você abriu a porta");
+            } else {
+                System.out.println("Porta continua trancada");
+            }
+        }catch (NullPointerException e) {
+            System.out.println("Jogador não possui chave");
         }
     }
 
@@ -62,6 +68,6 @@ public class Porta extends Item {
 
     @Override
     public String toString() {
-        return "Porta combinação:" + combinacao ;
+        return "Porta combinação:" + combinacao;
     }
 }
