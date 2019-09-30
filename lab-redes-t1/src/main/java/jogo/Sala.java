@@ -88,10 +88,15 @@ public class Sala {
         matriz[position.getVer()][position.getHor()] = item;
     }
 
-    public void listItens() {
+    public String listItens() {
+
+        String result = "F-";
+
         for (int ver = 0; ver < matriz.length; ver++)
             for (int hor = 0; hor < matriz[ver].length; hor++)
-                if(!(matriz[ver][hor] instanceof Chao || matriz[ver][hor] instanceof Parede))
-                    System.out.println(matriz[ver][hor] + "\nvertical: " + ver + "\nhorizontal: " + hor +"\n\n");
+                if (!(matriz[ver][hor] instanceof Chao || matriz[ver][hor] instanceof Parede))
+                    result += matriz[ver][hor] + "\nvertical: " + ver + "\nhorizontal: " + hor + "\n\n";
+
+        return result;
     }
 }
