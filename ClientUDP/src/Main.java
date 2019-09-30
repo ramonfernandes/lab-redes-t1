@@ -66,7 +66,13 @@ public class Main {
 
     private static String listenningCommand() {
         Scanner in = new Scanner(System.in);
-        return idJogador + "-" + in.nextLine();
+        String command = in.nextLine();
+        String fala = "";
+        if (command.equals("falar")) {
+            System.out.println("Digite a frase desejada");
+            fala = in.nextLine();
+        }
+        return idJogador + "-" + command + "-" + fala;
     }
 
     private static void printResponse(String receivedData) {

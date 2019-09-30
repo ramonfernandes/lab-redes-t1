@@ -18,7 +18,7 @@ import java.util.Scanner;
 public class App {
 
     private static final int porta = 9876;
-    private static final int numConn = 1;
+    private static final int numConn = 2;
     private static Sala sala;
     private static List<Jogador> jogadores = new ArrayList<>();
 
@@ -26,6 +26,7 @@ public class App {
 
         try {
 
+            jogadores.add(new Jogador(3, 3));
             jogadores.add(new Jogador(3, 3));
 
             System.out.println("INICIANDO JOGO \n Servidor ouvindo a porta 9876");
@@ -132,6 +133,10 @@ public class App {
                     return "F-O jogador " + jogador.getId() + " esta sem chave";
             case "investigar":
                 return sala.listItens();
+            case "falar":
+                return "O Jogador " + idJogador + " falou: " + command.split("-")[2];
+            case "ajuda":
+                return "AWSD: Movimentacao \n use: utiliza itens \n inventario: verifica inventario";
         }
         sala.removeJogador(sala.getJogadores().get(0));
         sala.addJogador(jogador);
